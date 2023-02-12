@@ -4,6 +4,7 @@ import AdminPanel from './components/admin/adminpanel/AdminPanel';
 import Description from './components/description/Description';
 import Home from './components/home/Home';
 import Listofcoins from './components/list/List0fcoins';
+import PaginatedItems from './PaginatedItems';
 
 function App() {
   return (

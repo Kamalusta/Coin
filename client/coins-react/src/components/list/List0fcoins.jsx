@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import './styleList.css'
+import PaginatedItems from "../../PaginatedItems";
+// import './styleList.css'
 
 export default function Listofcoins() {
     const params = useParams();
@@ -22,13 +23,14 @@ export default function Listofcoins() {
 
     return (
         <>
-            <p className="header">List of the coins</p>
+
+            {/* <p className="header">List of the coins</p>
             <Link to='/' className="goBackHome">Homepage</Link><span className="goBackHome">-List of the coins</span><br />
             <div className="inputfield">
                 <label >Input field</label><br />
                 <input type="text" disabled="true" /> <button>Search</button><br />
             </div>
-            {/* <Link to='/home'>Advanced filter ^</Link> */}
+
             <div className="listCoin">
                 {dataB.map((item) => (
                     <div className="coins-page2" key={item.id}>
@@ -39,7 +41,8 @@ export default function Listofcoins() {
                         </div>
                     </div>
                 ))}
-            </div>
+            </div> */}
+            <PaginatedItems itemsPerPage={4} data={dataB} params1={params.query} params2={params.category} />
         </>
     )
 }
