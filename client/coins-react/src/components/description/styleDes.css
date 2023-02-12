@@ -7,6 +7,7 @@ body {
     display: flex;
     flex-direction: column;
     margin-right: 30px;
+    max-width: 330px;
 }
 
 .card-page {
@@ -25,6 +26,7 @@ body {
 
 .card {
     display: flex;
+    flex-direction: row;
 }
 
 .card img {
@@ -32,15 +34,9 @@ body {
     height: 300px;
 }
 
-img {
-    width: 120px;
-    height: 120px;
-}
-
 h2 {
     font-size: 28px;
     margin: 0px;
-
 }
 
 tr:nth-child(odd) {

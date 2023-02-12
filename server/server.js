@@ -51,17 +51,18 @@ app.get('/list/:type', function (req, res) {
             connection.query(`select * from coin where coinname like '%${name}%'`,
                 (err, data) => {
                     newArr.push(data[0])
+                    res.json(data)
                 })
 
-            connection.query('select * from coin',
-                (err, data) => {
-                    data.forEach(element => {
-                        if (element.about.includes(name)) {
-                            newArr.push(element)
-                        }
-                    });
-                    res.json(newArr)
-                })
+            // connection.query('select * from coin',
+            //     (err, data) => {
+            //         data.forEach(element => {
+            //             if (element.about.includes(name)) {
+            //                 newArr.push(element)
+            //             }
+            //         });
+            //         res.json(newArr)
+            //     })
             break;
     }
 

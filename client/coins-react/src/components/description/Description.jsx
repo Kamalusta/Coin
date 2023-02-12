@@ -20,7 +20,7 @@ export default function Description() {
                 <div className="card" key={item.id}>
                     <div className="card-img">
                         <img src={item.coinpic} alt="uz" /><br />
-                        <img src={item.coinpic} alt="arxa" />
+                        <img src={item.coinpic2} alt="arxa" />
                     </div>
                     <div className="about">
                         <div >
