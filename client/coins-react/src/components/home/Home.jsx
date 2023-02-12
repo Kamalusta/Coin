@@ -82,7 +82,7 @@ export default function Home() {
                 <div className="admin-button"><h1>Homepage</h1> <button onClick={() => goAdminLogin()}>admin</button></div>
                 <label >Input field</label><br />
                 <input type="text" onChange={(e) => searChange(e)} /> <button onClick={(e) => handleClick(e)} >Search</button><br />
-                <Link to='/home' onClick={() => advance()}>Advanced filter ^</Link>
+                <Link to='/' onClick={() => advance()}>Advanced filter ^</Link>
 
                 <div className="coins-page">
                     <div>
@@ -112,7 +112,7 @@ export default function Home() {
                     <h1>Homepage</h1>
                     <label >Input field</label><br />
                     <input type="text" disabled="true" onChange={(e) => searChange(e)} /> <button type="submit" >Search</button><br />
-                    <Link to='/home' onClick={() => advance()}>Advanced filter</Link>
+                    <Link to='/' onClick={() => advance()}>Advanced filter</Link>
                     <div className="homepage2">
                         <div>
                             <label>Issuing country</label><br />

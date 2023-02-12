@@ -23,7 +23,7 @@ export default function Listofcoins() {
     return (
         <>
             <p className="header">List of the coins</p>
-            <Link to='/home' className="goBackHome">Homepage</Link><span className="goBackHome">-List of the coins</span><br />
+            <Link to='/' className="goBackHome">Homepage</Link><span className="goBackHome">-List of the coins</span><br />
             <div className="inputfield">
                 <label >Input field</label><br />
                 <input type="text" disabled="true" /> <button>Search</button><br />
