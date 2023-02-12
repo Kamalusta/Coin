@@ -21,22 +21,53 @@ connection.connect((err) => {
 //     res.send()
 // })
 
-app.get('/list/:category', function (req, res) {
+app.get('/list/:type', function (req, res) {
+    const { type } = req.params;
+    let { name, category, country, metal, quality, priceT, priceF } = req.query;
+    country ? country = `coincountry='${country}' and` : " ";
+    metal ? metal = `composition='${metal}' and` : " ";
+    quality ? quality = `quality='${quality}' and` : " ";
+    switch (type) {
+        case "group":
+            connection.query('select * from coin where category=?', [category],
+                (err, data) => {
+                    res.json(data)
+                })
+            break;
+        case "search":
+            console.log(country, metal, quality)
+            const yearF = parseInt(req.query.yearF)
+            const yearT = parseInt(req.query.yearT)
+            connection.query(`select * from coin where ${country} ${metal} ${quality} price > ${priceF} and price < ${priceT} and coinyear > ${yearF} and coinyear < ${yearT}`,
+                (err, data) => {
+                    res.json(data)
+                    if (err) {
+                        console.log(err)
+                    }
+                })
+            break;
+        case "withname":
+            const newArr = [];
+            connection.query(`select * from coin where coinname like '%${name}%'`,
+                (err, data) => {
+                    newArr.push(data[0])
+                })
 
-    const { category } = req.params;
-    connection.query('select * from coin where category=?', [category],
-        (err, data) => {
-            res.json(data)
-        })
+            connection.query('select * from coin',
+                (err, data) => {
+                    data.forEach(element => {
+                        if (element.about.includes(name)) {
+                            newArr.push(element)
+                        }
+                    });
+                    res.json(newArr)
+                })
+            break;
+    }
 
+    console.log('birinci' + req.params.type)
+    console.log(req.query)
 })
-
-
-
-
-
-
-
 
 connection.query('select * from coin',
     (err, data) => {
@@ -44,24 +75,6 @@ connection.query('select * from coin',
             res.json(data)
         })
     });
-// connection.query('select * from coin where category="Bullion coins"',
-//     (err, data) => {
-//         app.get('/home/Bullion', function (req, res) {
-//             res.json(data)
-//         })
-//     });
-// connection.query('select * from coin where category="Exclusive coins"',
-//     (err, data) => {
-//         app.get('/home/Exclusive', function (req, res) {
-//             res.json(data)
-//         })
-//     });
-// connection.query('select * from coin where category="Commemorative coins"',
-//     (err, data) => {
-//         app.get('/home/Commemorative', function (req, res) {
-//             res.json(data)
-//         })
-//     });
 
 app.listen(3001, function () {
     console.log("qosuldu")

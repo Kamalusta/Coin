@@ -1,0 +1,57 @@
+body {
+    max-width: 1280px;
+    margin: 30px;
+}
+
+.coins-page2 {
+    display: flex;
+    margin-right: 150px
+}
+
+.listCoin {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.coinabout {
+    width: 224px;
+    margin-top: 10px;
+}
+
+button {
+    background-color: blueviolet;
+    color: white;
+}
+
+h4:hover {
+    cursor: pointer;
+    color: black;
+}
+
+h4 {
+    color: blueviolet;
+    margin: 0px;
+}
+
+.goBackHome {
+    font-size: 10px;
+}
+
+.header {
+    margin-bottom: 0px;
+    font-size: 50px
+}
+
+input {
+    margin: 10px 0px;
+}
+
+.listImg {
+    width: 120px;
+    height: 120px;
+    margin-right: 30px;
+}
+
+.inputfield {
+    margin-top: 20px;
+}

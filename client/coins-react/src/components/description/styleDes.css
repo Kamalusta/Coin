@@ -1,0 +1,59 @@
+body {
+    max-width: 1280px;
+    margin: 30px;
+}
+
+.card-img {
+    display: flex;
+    flex-direction: column;
+    margin-right: 30px;
+}
+
+.card-page {
+    display: flex;
+    justify-content: center;
+}
+
+.about {
+    width: 452px;
+    background-color: #C4C4C480;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 43px;
+    justify-content: space-between
+}
+
+.card {
+    display: flex;
+}
+
+.card img {
+    width: 300px;
+    height: 300px;
+}
+
+img {
+    width: 120px;
+    height: 120px;
+}
+
+h2 {
+    font-size: 28px;
+    margin: 0px;
+
+}
+
+tr:nth-child(odd) {
+    background-color: white;
+}
+
+td,
+th {
+    border: 1px solid #ddd;
+    padding: 3px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}

@@ -1,0 +1,86 @@
+body {
+    max-width: 1280px;
+    margin: 30px;
+}
+
+
+.homepage2 {
+    display: flex;
+    margin-top: 25px;
+}
+
+
+button {
+    background-color: blueviolet;
+    color: white;
+    width: 120px;
+    height: 48px;
+}
+
+span {
+    font-size: 10px;
+}
+
+select {
+    width: 378px;
+    height: 48px;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+img {
+    width: 214px;
+    height: 214px;
+    margin-top: 10px;
+}
+
+h1 {
+    font-size: 50px;
+    font-weight: 300;
+}
+
+label {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+input {
+    width: 378px;
+    height: 48px;
+    box-sizing: border-box;
+}
+
+Link {
+    font-size: 14px;
+}
+
+.coins-page {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+}
+
+.searcher input {
+    width: 155px;
+    height: 48px;
+    margin-top: 0px;
+}
+
+.searcher span {
+    font-size: 14px;
+}
+
+.searcher {
+    margin-left: 30px;
+}
+
+.admin-button {
+    display: flex;
+    justify-content: space-between;
+}
+
+.admin-button button {
+    width: 50px;
+    height: 20px;
+    color: black;
+}
