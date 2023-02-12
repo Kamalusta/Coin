@@ -47,27 +47,29 @@ app.get('/list/:type', function (req, res) {
                 })
             break;
         case "withname":
-            const newArr = [];
-            connection.query(`select * from coin where coinname like '%${name}%'`,
+            connection.query(`select * from coin where coinname like '%${name}%' `,
                 (err, data) => {
-                    newArr.push(data[0])
-                    res.json(data)
+                    if (data.length)
+                        res.json(data)
+                    else {
+                        connection.query('select * from coin',
+                            (err, data) => {
+                                const newArr = [];
+                                console.log('ad yoxdur')
+                                data.forEach(element => {
+                                    if (element.about.includes(name)) {
+                                        newArr.push(element)
+                                    }
+                                });
+                                res.json(newArr)
+                            })
+                    }
                 })
 
-            // connection.query('select * from coin',
-            //     (err, data) => {
-            //         data.forEach(element => {
-            //             if (element.about.includes(name)) {
-            //                 newArr.push(element)
-            //             }
-            //         });
-            //         res.json(newArr)
-            //     })
+
             break;
     }
 
-    console.log('birinci' + req.params.type)
-    console.log(req.query)
 })
 
 connection.query('select * from coin',
