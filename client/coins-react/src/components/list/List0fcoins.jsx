@@ -22,27 +22,8 @@ export default function Listofcoins() {
     }
 
     return (
-        <>
-
-            {/* <p className="header">List of the coins</p>
-            <Link to='/' className="goBackHome">Homepage</Link><span className="goBackHome">-List of the coins</span><br />
-            <div className="inputfield">
-                <label >Input field</label><br />
-                <input type="text" disabled="true" /> <button>Search</button><br />
-            </div>
-
-            <div className="listCoin">
-                {dataB.map((item) => (
-                    <div className="coins-page2" key={item.id}>
-                        <img className="listImg" src={item.coinpic} alt="coinimage" ></img>
-                        <div className="coinabout">
-                            <h4 onClick={(e) => choosen(e)} >{item.coinname}</h4>
-                            <p>{item.about}</p>
-                        </div>
-                    </div>
-                ))}
-            </div> */}
+        <div >
             <PaginatedItems itemsPerPage={4} data={dataB} params1={params.query} params2={params.category} />
-        </>
+        </div>
     )
 }
