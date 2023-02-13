@@ -43,8 +43,6 @@ export default function Description() {
                             <Link to={`/list/${params.category}/${params.backlist}`}>Back to the list</Link>
                         </div>
                     </div>
-
-
                 </div>
             ))}
         </div>

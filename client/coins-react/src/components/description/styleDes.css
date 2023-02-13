@@ -1,6 +1,6 @@
 body {
     max-width: 1280px;
-    margin: 30px;
+    /* margin: 30px; */
 }
 
 .card-img {
@@ -10,10 +10,11 @@ body {
     max-width: 330px;
 }
 
-.card-page {
+/* .card-page {
     display: flex;
     justify-content: center;
-}
+    width: 100%;
+} */
 
 .about {
     width: 452px;
@@ -27,6 +28,7 @@ body {
 .card {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .card img {

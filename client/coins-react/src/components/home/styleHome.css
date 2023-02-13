@@ -1,6 +1,6 @@
 body {
     max-width: 1280px;
-    margin: 30px;
+    /* margin: 30px; */
 }
 
 
@@ -58,6 +58,7 @@ Link {
     display: flex;
     justify-content: space-between;
     margin-top: 60px;
+    flex-wrap: wrap;
 }
 
 .searcher input {

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import PaginatedItems from "../../PaginatedItems";
-// import './styleList.css'
+import { useNavigate, useParams } from "react-router-dom";
+import PaginatedItems from "./PaginatedItems";
 
 export default function Listofcoins() {
     const params = useParams();

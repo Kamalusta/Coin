@@ -164,7 +164,6 @@ export default function Home() {
                             <label>Year of issue</label><br />
                             <span>from</span><input type="number" onChange={handleYearFrom}></input> <span>to</span><input type="number" onChange={handleYearTo}></input>
                         </div>
-
                     </div>
                 </form>
             </>
