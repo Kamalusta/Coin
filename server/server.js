@@ -17,9 +17,6 @@ connection.connect((err) => {
         console.log('sql qosuldu')
     }
 })
-// app.get('/home', function (req, res) {
-//     res.send()
-// })
 
 app.get('/list/:type', function (req, res) {
     const { type } = req.params;
@@ -35,15 +32,11 @@ app.get('/list/:type', function (req, res) {
                 })
             break;
         case "search":
-            console.log(country, metal, quality)
             const yearF = parseInt(req.query.yearF)
             const yearT = parseInt(req.query.yearT)
             connection.query(`select * from coin where ${country} ${metal} ${quality} price > ${priceF} and price < ${priceT} and coinyear > ${yearF} and coinyear < ${yearT}`,
                 (err, data) => {
                     res.json(data)
-                    if (err) {
-                        console.log(err)
-                    }
                 })
             break;
         case "withname":
@@ -55,7 +48,6 @@ app.get('/list/:type', function (req, res) {
                         connection.query('select * from coin',
                             (err, data) => {
                                 const newArr = [];
-                                console.log('ad yoxdur')
                                 data.forEach(element => {
                                     if (element.about.includes(name)) {
                                         newArr.push(element)
@@ -65,11 +57,8 @@ app.get('/list/:type', function (req, res) {
                             })
                     }
                 })
-
-
             break;
     }
-
 })
 
 connection.query('select * from coin',

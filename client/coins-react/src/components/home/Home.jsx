@@ -6,11 +6,25 @@ import './styleHome.css'
 
 export default function Home() {
     const navigate = useNavigate();
-    const [dataP, setDataP] = useState(null);
+    const params = useParams();
+    const [dataP, setDataP] = useState([]);
     const [dataP2, setDataP2] = useState(null);
     const [dataP3, setDataP3] = useState(null);
     const [state, setState] = useState(false);
-    const [search, setSearch] = useState("")
+    const [search, setSearch] = useState("");
+    const [countryArr, setCountryArr] = useState([]);
+    const [metalarr, setMetal] = useState([]);
+    const [qualityarr, setQuality] = useState([]);
+    const [selectedOption, setSelectedOption] = useState("");
+    const [selectedOption1, setSelectedOption1] = useState("");
+    const [selectedOption2, setSelectedOption2] = useState("");
+    const [priceFrom, setPriceFrom] = useState(0)
+    const [priceTo, setPriceTo] = useState(10000)
+    const [yearFrom, setYearFrom] = useState(0)
+    const [yearTo, setYearTo] = useState(10000)
+    const countries = [];
+    const metal = [];
+    const quality = [];
 
     useEffect(() => {
         fetch("http://localhost:3001/home")
@@ -19,11 +33,32 @@ export default function Home() {
                 setDataP(data[0].coinpic)
                 setDataP2(data[1].coinpic)
                 setDataP3(data[2].coinpic)
-                //setDataP(data)
+                // setCountryArr(data)
+
+                data.map(item => {
+                    if (!countries.find(filtered => {
+                        return filtered === item.coincountry
+                    })) {
+                        countries.push(item.coincountry)
+                    }
+                    if (!metal.find(filtered => {
+                        return filtered === item.composition
+                    })) {
+                        metal.push(item.composition)
+                    }
+                    if (!quality.find(filtered => {
+                        return filtered === item.quality
+                    })) {
+                        quality.push(item.quality)
+                    }
+                })
             })
             .catch(error => {
                 console.error(error);
             });
+        setCountryArr(countries)
+        setQuality(quality)
+        setMetal(metal)
     }, []);
     const advance = () => {
         setState(!state)
@@ -31,19 +66,6 @@ export default function Home() {
     const handleClick = (e) => {
         navigate(`/list/withname/name=${search}`)
     }
-
-    const params = useParams();
-
-
-    const [selectedOption, setSelectedOption] = useState("");
-    const [selectedOption1, setSelectedOption1] = useState("");
-    const [selectedOption2, setSelectedOption2] = useState("");
-    const [priceFrom, setPriceFrom] = useState(0)
-    const [priceTo, setPriceTo] = useState(10000)
-    const [yearFrom, setYearFrom] = useState(0)
-    const [yearTo, setYearTo] = useState(10000)
-    // const [search, setSearch] = useState("")
-
     const handleChange = event => {
         setSelectedOption(event.target.value)
     };
@@ -65,7 +87,6 @@ export default function Home() {
     const handleYearTo = event => {
         setYearTo(event.target.value)
     }
-
     const handleSubmit = (e) => {
         navigate(`/list/search/country=${selectedOption}&metal=${selectedOption1}&quality=${selectedOption2}&priceF=${priceFrom}&priceT=${priceTo}&yearF=${yearFrom}&yearT=${yearTo}`);
     }
@@ -111,46 +132,35 @@ export default function Home() {
                 <form onSubmit={() => handleSubmit()}>
                     <h1>Homepage</h1>
                     <label >Input field</label><br />
-                    <input type="text" disabled="true" onChange={(e) => searChange(e)} /> <button type="submit" >Search</button><br />
+                    <input type="text" disabled={true} onChange={(e) => searChange(e)} /> <button type="submit" >Search</button><br />
                     <Link to='/' onClick={() => advance()}>Advanced filter</Link>
                     <div className="homepage2">
                         <div>
                             <label>Issuing country</label><br />
                             <select value={selectedOption} onChange={handleChange}>
-                                {/* {data.map((item) => (
-                                <option value={item.coincountry}>{item.coincountry}</option>
-                            ))} */}
                                 <option value="">Chose option</option>
-                                <option value="CANADA">Canada</option>
-                                <option value="India">India</option>
-                                <option value="The Republic of Vietnam">The Republic of Vietnam</option>
+                                {countryArr.map((item) => (
+                                    <option value={item}>{item}</option>
+                                ))}
                             </select><br />
-
                             <label>Metal</label><br />
                             <select value={selectedOption1} onChange={handleChange1}>
-                                {/* {data.map((item) => (
-                                <option value={item.composition}>{item.composition}</option>
-                            ))} */}
                                 <option value="">Chose option</option>
-                                <option value="nickel">nickel</option>
-                                <option value="steel">steel</option>
-                                <option value="gold">gold</option>
+                                {metalarr.map((item) => (
+                                    <option value={item}>{item}</option>
+                                ))}
                             </select><br />
-
                             <label>Quality of the coin</label><br />
                             <select value={selectedOption2} onChange={handleChange2}>
-                                {/* {data.map((item) => (
-                                <option value={item.quality}>{item.quality}</option>
-                            ))} */}
                                 <option value="">Chose option</option>
-                                <option value="BU">BU</option>
+                                {qualityarr.map((item) => (
+                                    <option value={item}>{item}</option>
+                                ))}
                             </select>
-
                         </div>
                         <div className="searcher">
                             <label>Price</label><br />
                             <span>from</span><input type="number" onChange={handlePriceFrom}></input> <span>to</span><input type="number" onChange={handlePriceTo}></input><br />
-
                             <label>Year of issue</label><br />
                             <span>from</span><input type="number" onChange={handleYearFrom}></input> <span>to</span><input type="number" onChange={handleYearTo}></input>
                         </div>
