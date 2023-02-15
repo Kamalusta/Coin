@@ -24,12 +24,11 @@ export default function AdminInputPanel() {
     }
 
     useEffect(() => {
-        fetch(`http://localhost:3001/editcoin/${params.id}`)
+        params.id && fetch(`http://localhost:3001/editcoin/${params.id}`)
             .then(res => res.json())
             .then(data => {
                 setInputstate({ id: data[0].id, coinname: data[0].coinname, category: data[0].category, coinyear: data[0].coinyear, price: data[0].price, coincountry: data[0].coincountry, composition: data[0].composition, about: data[0].about, about2: data[0].about2, quality: data[0].quality, weight: data[0].weight, coinpic: data[0].coinpic, coinpic2: data[0].coinpic2 })
             })
-        console.log(inputstate)
 
     }, [])
     return (

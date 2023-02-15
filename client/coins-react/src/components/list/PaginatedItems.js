@@ -15,7 +15,7 @@ function Items({ currentItems, params1, params2 }) {
             <Link to='/' className="goBackHome">Homepage</Link><span className="goBackHome">-List of the coins</span><br />
             <div className="inputfield">
                 <label >Input field</label><br />
-                <input type="text" disabled="true" /> <button>Search</button><br />
+                <input type="text" disabled={true} /> <button>Search</button><br />
             </div>
             <div className="listCoin">
                 {currentItems && currentItems.map((item) => (
@@ -44,7 +44,7 @@ export default function PaginatedItems({ itemsPerPage, data, params1, params2 })
     useEffect(() => {
         // Fetch items from another resources.
         const endOffset = itemOffset + perpage;
-        console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+        // console.log(`Loading items from ${itemOffset} to ${endOffset}`);
         setCurrentItems(data.slice(itemOffset, endOffset));
         setPageCount(Math.ceil(data.length / perpage));
     }, [itemOffset, perpage, data]);
@@ -52,7 +52,7 @@ export default function PaginatedItems({ itemsPerPage, data, params1, params2 })
     // Invoke when user click to request another page.
     const handlePageClick = (event) => {
         const newOffset = event.selected * perpage % data.length;
-        console.log(`User requested page number ${event.selected}, which is offset ${newOffset}`);
+        // console.log(`User requested page number ${event.selected}, which is offset ${newOffset}`);
         setItemOffset(newOffset);
     };
     const handleset = (e) => {

@@ -40,6 +40,7 @@ export default function AdminPanel() {
     return (
         <div>
             <p className='header'>Admin panel</p>
+            <Link to='/' className="goBackHome">Homepage</Link>
             <div className="inputfield">
                 <label >Input field</label><br />
                 <input type="text" disabled={true} /> <button>Search</button><br />
