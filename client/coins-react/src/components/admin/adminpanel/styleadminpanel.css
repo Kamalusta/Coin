@@ -3,10 +3,45 @@
     font-weight: 300;
 }
 
-.coins-page2 button {
+.addcoin {
+    width: 120px;
+    height: 120px;
+    border: 1px solid black;
+    border-radius: 50%;
+    /* text-align: center; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    margin-right: 30px;
+
+}
+
+.add-link {
+    display: flex;
+    align-items: center;
+}
+
+.listImg {
+    margin-bottom: 20px;
+}
+
+.coinabout {
+    margin-right: 20px;
+}
+
+.inputfield input {
+    margin-right: 12px;
+}
+
+.button {
     background-color: #E5E5E5;
     color: black;
     margin-top: 10px;
     margin-right: 30px;
     border: 0px;
+}
+
+.active {
+    background-color: blueviolet;
 }

@@ -3,7 +3,6 @@ import ReactPaginate from 'react-paginate';
 import { Link, useNavigate } from 'react-router-dom';
 import './styleList.css'
 
-
 function Items({ currentItems, params1, params2 }) {
     const navigate = useNavigate();
     const choosen = (e) => {
@@ -59,7 +58,6 @@ export default function PaginatedItems({ itemsPerPage, data, params1, params2 })
     const handleset = (e) => {
         setPerpage(e.target.value)
     }
-
     return (
         <>
             <Items currentItems={currentItems} params1={params1} params2={params2} />

@@ -1,11 +1,30 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import './styleadminpanel.css';
+
 
 
 export default function AdminPanel() {
     const navigate = useNavigate();
     const [data, setData] = useState([]);
+
+    const handleMouseDown = (e) => {
+        e.target.classList.add('active');
+    };
+    const handleMouseUp = (e) => {
+        e.target.classList.remove('active');
+
+    };
+    const handleDelete = (e) => {
+        fetch(`http://localhost:3001/delete/${e.target.id}`, {
+            method: 'DELETE',
+        })
+        window.location.reload()
+    }
+    const handleEdit = (e) => {
+        navigate(`/inputcoin/${e.target.id}`)
+
+    }
 
     useEffect(() => {
         fetch("http://localhost:3001/home")
@@ -21,10 +40,9 @@ export default function AdminPanel() {
     return (
         <div>
             <p className='header'>Admin panel</p>
-
             <div className="inputfield">
                 <label >Input field</label><br />
-                <input type="text" disabled="true" /> <button>Search</button><br />
+                <input type="text" disabled={true} /> <button>Search</button><br />
             </div>
             {/* <Link to='/home'>Advanced filter ^</Link> */}
             <div className="adminlistCoin">
@@ -35,10 +53,21 @@ export default function AdminPanel() {
                             <h4  >{item.coinname}</h4>
                             <p>{item.about}</p>
                         </div>
-                        <button>Edit</button>
-                        <button>Delete</button>
+                        <button className='button'
+                            id={item.id}
+                            onMouseDown={handleMouseDown}
+                            onMouseUp={handleMouseUp}
+                            onClick={handleEdit}>Edit</button>
+                        <button className='button'
+                            onMouseDown={handleMouseDown}
+                            onMouseUp={handleMouseUp} id={item.id} onClick={(e) => handleDelete(e)}>Delete</button>
                     </div>
                 ))}
+                <div className='add-link'>
+                    <div className='addcoin'>+</div>
+                    <Link to={'/inputcoin'}>Add a new coin</Link>
+                </div>
+
             </div>
 
         </div>

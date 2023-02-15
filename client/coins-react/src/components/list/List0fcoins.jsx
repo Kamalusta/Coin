@@ -15,10 +15,10 @@ export default function Listofcoins() {
             })
     }, []);
 
-    const choosen = (e) => {
-        const name = e.target.innerText
-        navigate(`/description/${name}/${params.query}/${params.category}`)
-    }
+    // const choosen = (e) => {
+    //     const name = e.target.innerText
+    //     navigate(`/description/${name}/${params.query}/${params.category}`)
+    // }
 
     return (
         <div >

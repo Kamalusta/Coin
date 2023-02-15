@@ -1,0 +1,25 @@
+.inputpanel input {
+    width: 374px;
+    height: 48px;
+    margin-right: 30px;
+    margin-top: 0px;
+}
+
+.input-form {
+    display: flex;
+}
+
+.description {
+    height: 130px !important;
+}
+
+.input-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.input-button button {
+    margin-right: 30px;
+    margin-bottom: 10px;
+}
